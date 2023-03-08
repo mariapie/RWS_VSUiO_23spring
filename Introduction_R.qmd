@@ -1,0 +1,573 @@
+---
+title: "Introduction to R"
+author: "Elisa Pierfederici and Matthew Good"
+date: 2023-03-13
+institute: Digital Scholarship Center
+format: 
+  revealjs:
+    theme: simple
+    css: ["theme/theme.css"]
+editor: visual
+echo: true
+---
+
+## Data science project
+
+![](fig/data-science.png){fig-align="center"}
+
+## The RStudio interface
+
+![](fig/rstudio_session_4pane_layout.png){fig-align="center"}
+
+## Create a project
+
+![](fig/new_project_window.png){fig-align="center"}
+
+## Organizing your working directory
+
+![](fig/directory_organization.png){fig-align="center"}
+
+## Create the first R script
+
+1.  Click the **`File`** menu and select **`New File`** and then **`R Script`**
+
+2.  Save your script by clicking the **`save/disk icon`** that is in the bar above the first line in the script editor
+
+## Downloading the data
+
+1.  Download the dataset called "`SAFI_clean.csv`" <https://ndownloader.figshare.com/files/11492171>
+
+2.  Place this downloaded file in the `data folder` you just created.
+
+## Installing packages
+
+![](fig/install_packages.png){fig-align="center"}
+
+## Installing packages
+
+![](fig/install_packages_2.png){fig-align="center"}
+
+## Creating an object - **`assignment`**
+
+You can create new objects with `<-`:
+
+```{r}
+area_hectares <- 1.0
+```
+
+Inspect an object
+
+```{r}
+area_hectares
+```
+
+## Descriptive names
+
+-   Object names must **`start with a letter`**
+
+-   Only contain letters, numbers, `_` and `.`
+
+::: {style="background-color: #f1ee8e;"}
+Recomanded **`snake_case`** separate lowercase words with `_`
+:::
+
+## Descriptive names - examples
+
+```{r}
+this_is_a_really_long_name <- 2.5 # numeric
+this_is_a_really_long_name
+```
+
+```{r}
+x <- "hello world" # character
+x
+```
+
+```{r}
+hh_members <- c(3, 7, 10, 6) # vector of numbers
+hh_members
+```
+
+# Data types & structure
+
+## Types of data
+
+| Type             | Definition                                                | Example                       |
+|------------------|-----------------------------------------------------------|-------------------------------|
+| Integer          | *whole numbers from -inf to +inf*                         | 1L, -2L                       |
+| Numeric/Double   | *numbers, fractions & decimals from -inf to + inf*        | 7, 0.2, -5/2                  |
+| Character/String | *quoted strings of letters, numbers, and allowed symbols* | "1", "one", "o_n\_e", "hello" |
+| Logical          | *logical constant of True or False*                       | TRUE, FALSE, T, F             |
+
+## Types of data
+
+You can use **`typeof()`** to find out the type of value or object
+
+```{r}
+typeof(1)
+```
+
+```{r}
+typeof(TRUE)
+```
+
+```{r}
+typeof("one")
+```
+
+## Types of data
+
+Missing data
+
+# Data structure
+
+## Vectors
+
+Often, we are not working with individual values, but with multiple related values ---
+
+::: {style="background-color: #f1ee8e;"}
+vector of values!
+:::
+
+We can create a vector of ordered numbers using the form **`starting_number:ending_numbers`**
+
+```{r}
+x <- 1:5
+x
+```
+
+Lets look at the Environment pane in RStudio
+
+## Vectors
+
+We can create a vector of any numbers we want using `c()`, which is a **function**.
+
+```{r}
+# combine values into a vector and assign to an object names "x"
+x <- c(2, 8.5, 1, 9)
+
+# print x
+x
+```
+
+## Vectors
+
+Vectors are just 1-dimensional sequences **of a single type of data**.
+
+::: {style="background-color: #f1ee8e;"}
+Note that vectors can also include strings or character values.
+:::
+
+```{r}
+letters <- c("a", "b", "c", "d")
+letters
+```
+
+## 
+
+## Vectors
+
+The general rule R uses is to set the vector to be the most "permissive" type necessary.
+
+For example, what happens if we combine the vectors `x` (from earlier) and `letters` together?
+
+```{r}
+mixed_vec <- c(x, letters)
+mixed_vec
+```
+
+## Vectors
+
+```{r}
+mixed_vec
+```
+
+Notice the quotes? R turned all of our numbers into strings, since strings are more "permissive" than numbers.
+
+```{r}
+typeof(mixed_vec)
+```
+
+This is called **coercion**. R coerces a vector into whichever type will accommodate all of the values
+
+## Vectors
+
+We can coerce `mixed_vec` to be numeric using **`as.numeric()`**, notice what happens to the character values
+
+```{r}
+as.numeric(mixed_vec)
+```
+
+# Help
+
+## RStudio
+
+```{r}
+?as.numeric
+```
+
+## Google
+
+![](fig/Stackoverflow.png){fig-align="center"}
+
+## 📝1
+
+::: panel-tabset
+### Q1
+
+Create an object called `a` that is just the letter "a" and an object `x` that is assigned the number 8. Add `a` to `x`. What happens?
+
+### Q2
+
+Create a vector called `b` that is just the number 8 in quotes. Add `b` to `x` (from above). What happens?
+
+### Q3
+
+Find some way to add `b` to `x`. (*Hint*: Don't forget about coercion.)
+:::
+
+## Solution 1
+
+::: panel-tabset
+### Q1
+
+```{r}
+a <- "a"
+x <- 8
+## a + x
+```
+
+### Q2
+
+```{r}
+b <- "8"
+## b + x
+```
+
+### Q3
+
+```{r}
+as.numeric(b) + x
+```
+:::
+
+## Indexing vectors
+
+How do we extract elements out of vectors?
+
+This is called **indexing**, and it is frequently quite useful
+
+There are a number of methods for indexing that are good to be familiar with
+
+## **Indexing by position**
+
+Vectors can be indexed numerically, starting with 1 (not 0). We can extract specific elements from a vector by putting the index of their position inside brackets `[]`.
+
+## **Indexing by position**
+
+Let's take a new vector `z` as an example:
+
+```{r}
+z <- 6:10
+```
+
+Let's get just the first element of `z`:
+
+```{r}
+z[1]
+```
+
+Get the first and third element by passing those indexes as a vector using `c()`.
+
+```{r}
+z[c(1, 3)]
+```
+
+##List
+
+Vectors are great for storing a single type of data, but what if we have a variety of different kinds of data we want to store together?
+
+For example, let's say I want to store the year I am in the PhD program (a number), my name ( a string), and my enrollment status (a logical) in a single object that preserves these different types... 🤔
+
+A vector won't work, but a list will.
+
+Lists are like vectors in that they are a 1-dimensional object, but they can contain heterogeneous data.
+
+## Creating Lists
+
+We can create a list with the **`list()`** function
+
+```{r}
+brendan <- list(4L, "Brendan Cullen", TRUE)
+brendan
+```
+
+## Creating Lists
+
+And, we can give each element of the list a name to make it easier to keep track of them.
+
+```{r}
+brendan <- list(year = 4L,
+                name = "Brendan Cullen",
+                enrollment = TRUE)
+brendan
+```
+
+Notice that \[\[1\]\], \[\[2\]\], and \[\[3\]\], the element indices, have been replaced by the names year, name, and enrollment 👀
+
+## Creating Lists
+
+You can see also see the names of a list by running **`names()`** on it
+
+```{r}
+names(brendan)
+```
+
+## Indexing Lists
+
+If we want the actual object stored at the first position instead of a list containing that object, we have to use double-bracket indexing list\[\[i\]\]:
+
+```{r}
+brendan[[1]]
+```
+
+# Break
+
+## Data frames
+
+A **data frame** is a common way of representing rectangular data \-- collections of values that are each associated with a variable (column) and an observation (row). In other words, it has 2 dimensions.
+
+A data frame is technically a special kind of list \-- it can contain different kinds of data in different columns, but each column must be the same length.
+
+## Data frames
+
+![](fig/Dataframe.png){fig-align="center"}
+
+## Import data frames {style="blue"}
+
+### From *.csv*
+
+1.  Upload **`package tidyverse`**
+2.  Load the library
+
+```{r}
+## load the tidyverse
+library(tidyverse)
+library(here)
+```
+
+## Import data frames
+
+### From *.csv*
+
+3.  Import data frame and call it interview
+
+```{r}
+interviews <- read_csv(here("data", "SAFI_clean.csv"), na = "NULL")
+```
+
+4.  Inspect database
+
+```{r}
+#| eval: false
+## inspect the data
+interviews
+## view(interviews)
+## head(interviews)
+```
+
+## **Presentation of the SAFI Data**
+
+SAFI (Studying African Farmer-Led Irrigation) is a study looking at farming and irrigation methods in Tanzania and Mozambique. The survey data was collected through interviews conducted between November 2016 and June 2017. For this lesson, we will be using a subset of the available data. For information about the full teaching dataset used in other lessons in this workshop, see the [dataset description](https://www.datacarpentry.org/socialsci-workshop/data/).
+
+## Inspecting data frames
+
+### Size
+
+-   **`dim(interviews)`** - returns a vector with the number of rows as the first element, and the number of columns as the second element (the dimensions of the object)
+
+-   **`nrow(interviews)`** - returns the number of rows **`ncol(interviews)`** - returns the number of columns
+
+## Inspecting data frames
+
+### Content:
+
+-   **`head(interviews)`** - shows the first 6 rows **`tail(interviews)`** - shows the last 6 rows
+
+## Inspecting data frames
+
+### Summary:
+
+-   **`str(interviews)`** - structure of the object and information about the class, length and content of each column
+
+-   **`summary(interviews)`** - summary statistics for each column
+
+## Subsetting data frames
+
+Let's get the first row and third column of `interviews` using numerical indexing
+
+```{r}
+## first element in the first column 
+interviews[1, 1]
+```
+
+```{r}
+## first element in the 6th column of the tibble 
+interviews[1, 6]
+```
+
+## Subsetting data frames
+
+```{r}
+## first three elements in the 7th column of the tibble
+interviews[1:3, 7]
+```
+
+```{r}
+## equivalent to head_interviews <- head(interviews)
+head_interviews <- interviews[1:6, ]
+```
+
+## Negative Subsetting data frames
+
+```{r}
+# The whole tibble, except the first column
+interviews[, -1]          
+```
+
+## 📝2
+
+::: panel-tabset
+### Q1
+
+Create a tibble (interviews_100) containing only the data in row 100 of the interviews dataset.
+
+### Q2
+
+Notice how nrow() gave you the number of rows in the tibble?
+
+-   Use that number to pull out just that last row in the tibble.
+
+-   Compare that with what you see as the last row using tail() to make sure it's meeting expectations.
+:::
+
+## Solution 2
+
+::: panel-tabset
+### Q1
+
+```{r}
+## 1.
+interviews_100 <- interviews[100, ]
+interviews_100
+```
+
+### Q2
+
+```{r}
+## 2.
+# Saving `n_rows` to improve readability and reduce duplication
+n_rows <- nrow(interviews)
+interviews_last <- interviews[n_rows, ]
+```
+:::
+
+# Grammar of data manipulation
+
+## **Learning `dplyr`**
+
+::: {style="background-color: #f1ee8e;"}
+`select()` picks variables based on their names.\
+`filter()` picks cases based on their values.
+:::
+
+`mutate()` - adds or alters variables that are functions of existing variables\
+`summarise()` reduces multiple values down to a single summary.\
+`arrange()` changes the ordering of the rows.
+
+## `filter()` - subsetting rows
+
+![](gif/filtering.gif){fig-align="center"}
+
+# 
+
+## `select()` - reduce columns
+
+Reducing the number of columns (or rearranging columns)
+
+![](gif/selecting.gif){fig-align="center"}
+
+## Select columns
+
+```{r}
+# to select columns throughout the dataframe
+select(interviews, village, no_membrs, months_lack_food)
+# to do the same thing with subsetting
+interviews[c("village","no_membrs","months_lack_food")]
+# to select a series of connected columns
+select(interviews, village:respondent_wall_type)
+```
+
+## Filtering rows
+
+```{r}
+# filters observations where village name is "Chirodzo"
+filter(interviews, village == "Chirodzo")
+```
+
+## Filtering rows
+
+```{r}
+# filters observations with "and" operator (comma)
+# output dataframe satisfies ALL specified conditions
+filter(interviews, village == "Chirodzo",
+                   rooms > 1,
+                   no_meals > 2)
+```
+
+## Filtering rows
+
+```{r}
+# filters observations with "&" logical operator
+# output dataframe satisfies ALL specified conditions
+filter(interviews, village == "Chirodzo" &
+                   rooms > 1 &
+                   no_meals > 2)
+```
+
+## The pipe
+
+::: {style="background-color: #f1ee8e;"}
+Ctrl + Shift + M if you have a PC
+:::
+
+::: {style="background-color: #f1ee8e;"}
+Cmd + Shift + M if you have a Mac
+:::
+
+```{r}
+# standard 
+interviews2 <- filter(interviews, village == "Chirodzo")
+interviews_ch <- select(interviews2, village:respondent_wall_type)
+
+# piped
+interviews_ch <- interviews %>%
+    filter(village == "Chirodzo") %>%
+    select(village:respondent_wall_type)
+
+interviews_ch
+```
+
+## 📝2
+
+Using pipes, subset the interviews data to include interviews where respondents were members of an irrigation association (memb_assoc) and retain only the columns affect_conflicts, liv_count, and no_meals.
+
+## Solution
+
+```{r}
+interviews %>%
+    filter(memb_assoc == "yes") %>%
+    select(affect_conflicts, liv_count, no_meals)
+```
+
+Shortcuts
