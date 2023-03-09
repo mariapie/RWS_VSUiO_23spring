@@ -649,8 +649,7 @@ interviews %>%
     group_by(village)
 ```
 
-## 
-Summarize() - summary statistic
+## Summarize() - summary statistic
 
 -   takes as arguments the column names that contain the **categorical** variables for which you want to calculate the summary statistics.
 
