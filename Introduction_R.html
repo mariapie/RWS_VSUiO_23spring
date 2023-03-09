@@ -442,6 +442,13 @@ Elisa Pierfederici and Matthew Good
 <h2>Installing packages</h2>
 
 <img data-src="fig/install_packages_2.png" class="r-stretch quarto-figure-center"></section>
+<section id="shortcut---run-a-code" class="slide level2">
+<h2>Shortcut - run a code</h2>
+<ul>
+<li>PC: <code>Ctrl</code> + <code>Enter</code></li>
+<li>Mac: <code>Cmd</code>+ <code>Return</code></li>
+</ul>
+</section>
 <section id="creating-an-object---assignment" class="slide level2">
 <h2>Creating an object - <strong><code>assignment</code></strong></h2>
 <p>You can create new objects with <code>&lt;-</code>:</p>
@@ -491,17 +498,17 @@ Elisa Pierfederici and Matthew Good
 </div>
 </section>
 <section>
-<section id="data-types-structure" class="title-slide slide level1 center">
+<section id="sec-data-types--structure" class="title-slide slide level1 center" style="color: darkblue">
 <h1>Data types &amp; structure</h1>
 
 </section>
-<section id="types-of-data" class="slide level2">
+<section id="types-of-data" class="slide level2 nostretch">
 <h2>Types of data</h2>
 <table>
 <colgroup>
-<col style="width: 16%">
-<col style="width: 54%">
-<col style="width: 28%">
+<col style="width: 25%">
+<col style="width: 48%">
+<col style="width: 26%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -513,23 +520,23 @@ Elisa Pierfederici and Matthew Good
 <tbody>
 <tr class="odd">
 <td>Integer</td>
-<td><em>whole numbers from -inf to +inf</em></td>
+<td>whole numbers from -inf to +inf</td>
 <td>1L, -2L</td>
 </tr>
 <tr class="even">
 <td>Numeric/Double</td>
-<td><em>numbers, fractions &amp; decimals from -inf to + inf</em></td>
+<td>numbers, fractions &amp; decimals from -inf to + inf</td>
 <td>7, 0.2, -5/2</td>
 </tr>
 <tr class="odd">
 <td>Character/String</td>
-<td><em>quoted strings of letters, numbers, and allowed symbols</em></td>
+<td>quoted strings of letters, numbers, and allowed symbols</td>
 <td>“1”, “one”, “o_n_e”, “hello”</td>
 </tr>
 <tr class="even">
 <td>Logical</td>
-<td><em>logical constant of True or False</em></td>
-<td>TRUE, FALSE, T, F</td>
+<td>logical constant of True or False</td>
+<td><code>TRUE</code>, <code>FALSE</code>, <code>T</code>, <code>F</code></td>
 </tr>
 </tbody>
 </table>
@@ -558,10 +565,35 @@ Elisa Pierfederici and Matthew Good
 </section>
 <section id="types-of-data-2" class="slide level2">
 <h2>Types of data</h2>
-<p>Missing data</p>
+<table>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 69%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Defintion</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NA</td>
+<td>Missing value; technically represented as different types but displayed as <code>NA</code></td>
+<td><code>NA</code></td>
+</tr>
+<tr class="even">
+<td>NULL</td>
+<td>The <code>NULL</code> object; an object that exists but is completely empty</td>
+<td><code>NULL</code></td>
+</tr>
+</tbody>
+</table>
 </section></section>
 <section>
-<section id="data-structure" class="title-slide slide level1 center">
+<section id="sec-data-structure" class="title-slide slide level1 center" style="color: darkblue">
 <h1>Data structure</h1>
 
 </section>
@@ -609,9 +641,6 @@ Elisa Pierfederici and Matthew Good
 </div>
 </div>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-</section>
 <section id="vectors-3" class="slide level2">
 <h2>Vectors</h2>
 <p>The general rule R uses is to set the vector to be the most “permissive” type necessary.</p>
@@ -652,7 +681,7 @@ Elisa Pierfederici and Matthew Good
 </div>
 </section></section>
 <section>
-<section id="help" class="title-slide slide level1 center">
+<section id="sec-help" class="title-slide slide level1 center" style="color: darkblue">
 <h1>Help</h1>
 
 </section>
@@ -666,7 +695,7 @@ Elisa Pierfederici and Matthew Good
 <h2>Google</h2>
 
 <img data-src="fig/Stackoverflow.png" class="r-stretch quarto-figure-center"></section>
-<section id="section-1" class="slide level2">
+<section id="section" class="slide level2">
 <h2>📝1</h2>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Q1</a></li><li><a href="#tabset-1-2">Q2</a></li><li><a href="#tabset-1-3">Q3</a></li></ul>
@@ -742,11 +771,15 @@ Elisa Pierfederici and Matthew Good
 <pre><code>[1] 6 8</code></pre>
 </div>
 </div>
-<p>##List</p>
-<p>Vectors are great for storing a single type of data, but what if we have a variety of different kinds of data we want to store together?</p>
-<p>For example, let’s say I want to store the year I am in the PhD program (a number), my name ( a string), and my enrollment status (a logical) in a single object that preserves these different types… 🤔</p>
-<p>A vector won’t work, but a list will.</p>
-<p>Lists are like vectors in that they are a 1-dimensional object, but they can contain heterogeneous data.</p>
+</section>
+<section id="list" class="slide level2">
+<h2>List</h2>
+<p>While vectors are useful for storing a single type of data, they’re not well-suited for storing heterogeneous data. In other words, if we have different types of data we want to store together, we need a different data structure.</p>
+</section>
+<section id="list-1" class="slide level2">
+<h2>List</h2>
+<p>For example, let’s say we want to store the year we’re in a PhD program (a number), our name (a string), and our enrollment status (a logical) in a single object that preserves these different types. In this case, a vector won’t work because it can only contain elements of the same type. Instead, we can use a list.</p>
+<p>Lists are similar to vectors in that they’re 1-dimensional, but they can store heterogeneous data. In other words, each element in a list can be a different type of data. This makes lists a more flexible data structure for storing complex or diverse data.</p>
 </section>
 <section id="creating-lists" class="slide level2">
 <h2>Creating Lists</h2>
@@ -949,7 +982,7 @@ $enrollment
 </div>
 </div>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2>📝2</h2>
 <div class="panel-tabset">
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Q1</a></li><li><a href="#tabset-3-2">Q2</a></li></ul>
@@ -1006,7 +1039,7 @@ $enrollment
 
 </section>
 <section id="learning-dplyr" class="slide level2">
-<h2><strong>Learning <code>dplyr</code></strong></h2>
+<h2>Learning <strong><code>dplyr</code></strong></h2>
 <div style="background-color: #f1ee8e;">
 <p><code>select()</code> picks variables based on their names.<br>
 <code>filter()</code> picks cases based on their values.</p>
@@ -1020,7 +1053,7 @@ $enrollment
 
 <img data-src="gif/filtering.gif" class="r-stretch quarto-figure-center"></section></section>
 <section>
-<section id="section-3" class="title-slide slide level1 center">
+<section id="section-2" class="title-slide slide level1 center">
 <h1></h1>
 
 </section>
@@ -1033,210 +1066,169 @@ $enrollment
 <h2>Select columns</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># to select columns throughout the dataframe</span></span>
-<span id="cb63-2"><a href="#cb63-2"></a><span class="fu">select</span>(interviews, village, no_membrs, months_lack_food)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 131 × 3
-   village  no_membrs months_lack_food       
-   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;                  
- 1 God              3 Jan                    
- 2 God              7 Jan;Sept;Oct;Nov;Dec   
- 3 God             10 Jan;Feb;Mar;Oct;Nov;Dec
- 4 God              7 Sept;Oct;Nov;Dec       
- 5 God              7 Aug;Sept;Oct;Nov       
- 6 God              3 Aug;Sept;Oct           
- 7 God              6 Nov                    
- 8 Chirodzo        12 Jan                    
- 9 Chirodzo         8 Jan;Dec                
-10 Chirodzo        12 Jan;Oct;Nov;Dec        
-# … with 121 more rows</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># to do the same thing with subsetting</span></span>
-<span id="cb65-2"><a href="#cb65-2"></a>interviews[<span class="fu">c</span>(<span class="st">"village"</span>,<span class="st">"no_membrs"</span>,<span class="st">"months_lack_food"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 131 × 3
-   village  no_membrs months_lack_food       
-   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;                  
- 1 God              3 Jan                    
- 2 God              7 Jan;Sept;Oct;Nov;Dec   
- 3 God             10 Jan;Feb;Mar;Oct;Nov;Dec
- 4 God              7 Sept;Oct;Nov;Dec       
- 5 God              7 Aug;Sept;Oct;Nov       
- 6 God              3 Aug;Sept;Oct           
- 7 God              6 Nov                    
- 8 Chirodzo        12 Jan                    
- 9 Chirodzo         8 Jan;Dec                
-10 Chirodzo        12 Jan;Oct;Nov;Dec        
-# … with 121 more rows</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># to select a series of connected columns</span></span>
-<span id="cb67-2"><a href="#cb67-2"></a><span class="fu">select</span>(interviews, village<span class="sc">:</span>respondent_wall_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 131 × 5
-   village  interview_date      no_membrs years_liv respondent_wall_type
-   &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;               
- 1 God      2016-11-17 00:00:00         3         4 muddaub             
- 2 God      2016-11-17 00:00:00         7         9 muddaub             
- 3 God      2016-11-17 00:00:00        10        15 burntbricks         
- 4 God      2016-11-17 00:00:00         7         6 burntbricks         
- 5 God      2016-11-17 00:00:00         7        40 burntbricks         
- 6 God      2016-11-17 00:00:00         3         3 muddaub             
- 7 God      2016-11-17 00:00:00         6        38 muddaub             
- 8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
- 9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
-10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
-# … with 121 more rows</code></pre>
-</div>
+<span id="cb63-2"><a href="#cb63-2"></a><span class="fu">select</span>(interviews, village, no_membrs, months_lack_food)</span>
+<span id="cb63-3"><a href="#cb63-3"></a><span class="co"># to do the same thing with subsetting</span></span>
+<span id="cb63-4"><a href="#cb63-4"></a>interviews[<span class="fu">c</span>(<span class="st">"village"</span>,<span class="st">"no_membrs"</span>,<span class="st">"months_lack_food"</span>)]</span>
+<span id="cb63-5"><a href="#cb63-5"></a><span class="co"># to select a series of connected columns</span></span>
+<span id="cb63-6"><a href="#cb63-6"></a><span class="fu">select</span>(interviews, village<span class="sc">:</span>respondent_wall_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="filtering-rows" class="slide level2">
 <h2>Filtering rows</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="co"># filters observations where village name is "Chirodzo"</span></span>
-<span id="cb69-2"><a href="#cb69-2"></a><span class="fu">filter</span>(interviews, village <span class="sc">==</span> <span class="st">"Chirodzo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 39 × 14
-   key_ID village  interview_date      no_membrs years_liv respo…¹ rooms memb_…²
-    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  
- 1      8 Chirodzo 2016-11-16 00:00:00        12        70 burntb…     3 yes    
- 2      9 Chirodzo 2016-11-16 00:00:00         8         6 burntb…     1 no     
- 3     10 Chirodzo 2016-12-16 00:00:00        12        23 burntb…     5 no     
- 4     34 Chirodzo 2016-11-17 00:00:00         8        18 burntb…     3 yes    
- 5     35 Chirodzo 2016-11-17 00:00:00         5        45 muddaub     1 yes    
- 6     36 Chirodzo 2016-11-17 00:00:00         6        23 sunbri…     1 yes    
- 7     37 Chirodzo 2016-11-17 00:00:00         3         8 burntb…     1 &lt;NA&gt;   
- 8     43 Chirodzo 2016-11-17 00:00:00         7        29 muddaub     1 no     
- 9     44 Chirodzo 2016-11-17 00:00:00         2         6 muddaub     1 &lt;NA&gt;   
-10     45 Chirodzo 2016-11-17 00:00:00         9         7 muddaub     1 no     
-# … with 29 more rows, 6 more variables: affect_conflicts &lt;chr&gt;,
-#   liv_count &lt;dbl&gt;, items_owned &lt;chr&gt;, no_meals &lt;dbl&gt;, months_lack_food &lt;chr&gt;,
-#   instanceID &lt;chr&gt;, and abbreviated variable names ¹​respondent_wall_type,
-#   ²​memb_assoc</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># filters observations where village name is "Chirodzo"</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a><span class="fu">filter</span>(interviews, village <span class="sc">==</span> <span class="st">"Chirodzo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="filtering-rows-1" class="slide level2">
 <h2>Filtering rows</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="co"># filters observations with "and" operator (comma)</span></span>
-<span id="cb71-2"><a href="#cb71-2"></a><span class="co"># output dataframe satisfies ALL specified conditions</span></span>
-<span id="cb71-3"><a href="#cb71-3"></a><span class="fu">filter</span>(interviews, village <span class="sc">==</span> <span class="st">"Chirodzo"</span>,</span>
-<span id="cb71-4"><a href="#cb71-4"></a>                   rooms <span class="sc">&gt;</span> <span class="dv">1</span>,</span>
-<span id="cb71-5"><a href="#cb71-5"></a>                   no_meals <span class="sc">&gt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 14
-   key_ID village  interview_date      no_membrs years_liv respo…¹ rooms memb_…²
-    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  
- 1     10 Chirodzo 2016-12-16 00:00:00        12        23 burntb…     5 no     
- 2     49 Chirodzo 2016-11-16 00:00:00         6        26 burntb…     2 &lt;NA&gt;   
- 3     52 Chirodzo 2016-11-16 00:00:00        11        15 burntb…     3 no     
- 4     56 Chirodzo 2016-11-16 00:00:00        12        23 burntb…     2 yes    
- 5     65 Chirodzo 2016-11-16 00:00:00         8        20 burntb…     3 no     
- 6     66 Chirodzo 2016-11-16 00:00:00        10        37 burntb…     3 yes    
- 7     67 Chirodzo 2016-11-16 00:00:00         5        31 burntb…     2 no     
- 8     68 Chirodzo 2016-11-16 00:00:00         8        52 burntb…     3 no     
- 9    199 Chirodzo 2017-06-04 00:00:00         7        17 burntb…     2 yes    
-10    200 Chirodzo 2017-06-04 00:00:00         8        20 burntb…     2 &lt;NA&gt;   
-# … with 6 more variables: affect_conflicts &lt;chr&gt;, liv_count &lt;dbl&gt;,
-#   items_owned &lt;chr&gt;, no_meals &lt;dbl&gt;, months_lack_food &lt;chr&gt;,
-#   instanceID &lt;chr&gt;, and abbreviated variable names ¹​respondent_wall_type,
-#   ²​memb_assoc</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># filters observations with "and" operator (comma)</span></span>
+<span id="cb65-2"><a href="#cb65-2"></a><span class="co"># output dataframe satisfies ALL specified conditions</span></span>
+<span id="cb65-3"><a href="#cb65-3"></a><span class="fu">filter</span>(interviews, village <span class="sc">==</span> <span class="st">"Chirodzo"</span>,</span>
+<span id="cb65-4"><a href="#cb65-4"></a>                   rooms <span class="sc">&gt;</span> <span class="dv">1</span>,</span>
+<span id="cb65-5"><a href="#cb65-5"></a>                   no_meals <span class="sc">&gt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="filtering-rows-2" class="slide level2">
 <h2>Filtering rows</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># filters observations with "&amp;" logical operator</span></span>
-<span id="cb73-2"><a href="#cb73-2"></a><span class="co"># output dataframe satisfies ALL specified conditions</span></span>
-<span id="cb73-3"><a href="#cb73-3"></a><span class="fu">filter</span>(interviews, village <span class="sc">==</span> <span class="st">"Chirodzo"</span> <span class="sc">&amp;</span></span>
-<span id="cb73-4"><a href="#cb73-4"></a>                   rooms <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;</span></span>
-<span id="cb73-5"><a href="#cb73-5"></a>                   no_meals <span class="sc">&gt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 14
-   key_ID village  interview_date      no_membrs years_liv respo…¹ rooms memb_…²
-    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  
- 1     10 Chirodzo 2016-12-16 00:00:00        12        23 burntb…     5 no     
- 2     49 Chirodzo 2016-11-16 00:00:00         6        26 burntb…     2 &lt;NA&gt;   
- 3     52 Chirodzo 2016-11-16 00:00:00        11        15 burntb…     3 no     
- 4     56 Chirodzo 2016-11-16 00:00:00        12        23 burntb…     2 yes    
- 5     65 Chirodzo 2016-11-16 00:00:00         8        20 burntb…     3 no     
- 6     66 Chirodzo 2016-11-16 00:00:00        10        37 burntb…     3 yes    
- 7     67 Chirodzo 2016-11-16 00:00:00         5        31 burntb…     2 no     
- 8     68 Chirodzo 2016-11-16 00:00:00         8        52 burntb…     3 no     
- 9    199 Chirodzo 2017-06-04 00:00:00         7        17 burntb…     2 yes    
-10    200 Chirodzo 2017-06-04 00:00:00         8        20 burntb…     2 &lt;NA&gt;   
-# … with 6 more variables: affect_conflicts &lt;chr&gt;, liv_count &lt;dbl&gt;,
-#   items_owned &lt;chr&gt;, no_meals &lt;dbl&gt;, months_lack_food &lt;chr&gt;,
-#   instanceID &lt;chr&gt;, and abbreviated variable names ¹​respondent_wall_type,
-#   ²​memb_assoc</code></pre>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="co"># filters observations with "&amp;" logical operator</span></span>
+<span id="cb66-2"><a href="#cb66-2"></a><span class="co"># output dataframe satisfies ALL specified conditions</span></span>
+<span id="cb66-3"><a href="#cb66-3"></a><span class="fu">filter</span>(interviews, village <span class="sc">==</span> <span class="st">"Chirodzo"</span> <span class="sc">&amp;</span></span>
+<span id="cb66-4"><a href="#cb66-4"></a>                   rooms <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;</span></span>
+<span id="cb66-5"><a href="#cb66-5"></a>                   no_meals <span class="sc">&gt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+</section>
+<section id="shortcut---the-pipe" class="slide level2">
+<h2>Shortcut - the pipe</h2>
+<ul>
+<li>PC: <code>Ctrl</code> + <code>Shift</code> + <code>M</code></li>
+<li>Mac: <code>Cmd</code> + <code>Shift</code> + <code>M</code></li>
+</ul>
 </section>
 <section id="the-pipe" class="slide level2">
 <h2>The pipe</h2>
-<div style="background-color: #f1ee8e;">
-<p>Ctrl + Shift + M if you have a PC</p>
-</div>
-<div style="background-color: #f1ee8e;">
-<p>Cmd + Shift + M if you have a Mac</p>
-</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># standard </span></span>
-<span id="cb75-2"><a href="#cb75-2"></a>interviews2 <span class="ot">&lt;-</span> <span class="fu">filter</span>(interviews, village <span class="sc">==</span> <span class="st">"Chirodzo"</span>)</span>
-<span id="cb75-3"><a href="#cb75-3"></a>interviews_ch <span class="ot">&lt;-</span> <span class="fu">select</span>(interviews2, village<span class="sc">:</span>respondent_wall_type)</span>
-<span id="cb75-4"><a href="#cb75-4"></a></span>
-<span id="cb75-5"><a href="#cb75-5"></a><span class="co"># piped</span></span>
-<span id="cb75-6"><a href="#cb75-6"></a>interviews_ch <span class="ot">&lt;-</span> interviews <span class="sc">%&gt;%</span></span>
-<span id="cb75-7"><a href="#cb75-7"></a>    <span class="fu">filter</span>(village <span class="sc">==</span> <span class="st">"Chirodzo"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb75-8"><a href="#cb75-8"></a>    <span class="fu">select</span>(village<span class="sc">:</span>respondent_wall_type)</span>
-<span id="cb75-9"><a href="#cb75-9"></a></span>
-<span id="cb75-10"><a href="#cb75-10"></a>interviews_ch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 39 × 5
-   village  interview_date      no_membrs years_liv respondent_wall_type
-   &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;               
- 1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
- 2 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
- 3 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
- 4 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks         
- 5 Chirodzo 2016-11-17 00:00:00         5        45 muddaub             
- 6 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks           
- 7 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks         
- 8 Chirodzo 2016-11-17 00:00:00         7        29 muddaub             
- 9 Chirodzo 2016-11-17 00:00:00         2         6 muddaub             
-10 Chirodzo 2016-11-17 00:00:00         9         7 muddaub             
-# … with 29 more rows</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># standard </span></span>
+<span id="cb67-2"><a href="#cb67-2"></a>interviews2 <span class="ot">&lt;-</span> <span class="fu">filter</span>(interviews, village <span class="sc">==</span> <span class="st">"Chirodzo"</span>)</span>
+<span id="cb67-3"><a href="#cb67-3"></a>interviews_ch <span class="ot">&lt;-</span> <span class="fu">select</span>(interviews2, village<span class="sc">:</span>respondent_wall_type)</span>
+<span id="cb67-4"><a href="#cb67-4"></a></span>
+<span id="cb67-5"><a href="#cb67-5"></a><span class="co"># piped</span></span>
+<span id="cb67-6"><a href="#cb67-6"></a>interviews_ch <span class="ot">&lt;-</span> interviews <span class="sc">%&gt;%</span></span>
+<span id="cb67-7"><a href="#cb67-7"></a>    <span class="fu">filter</span>(village <span class="sc">==</span> <span class="st">"Chirodzo"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb67-8"><a href="#cb67-8"></a>    <span class="fu">select</span>(village<span class="sc">:</span>respondent_wall_type)</span>
+<span id="cb67-9"><a href="#cb67-9"></a></span>
+<span id="cb67-10"><a href="#cb67-10"></a>interviews_ch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="section-4" class="slide level2">
-<h2>📝2</h2>
+<section id="section-3" class="slide level2">
+<h2>📝3</h2>
 <p>Using pipes, subset the interviews data to include interviews where respondents were members of an irrigation association (memb_assoc) and retain only the columns affect_conflicts, liv_count, and no_meals.</p>
 </section>
-<section id="solution" class="slide level2">
-<h2>Solution</h2>
+<section id="solution-3" class="slide level2">
+<h2>Solution 3</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>interviews <span class="sc">%&gt;%</span></span>
+<span id="cb68-2"><a href="#cb68-2"></a>    <span class="fu">filter</span>(memb_assoc <span class="sc">==</span> <span class="st">"yes"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb68-3"><a href="#cb68-3"></a>    <span class="fu">select</span>(affect_conflicts, liv_count, no_meals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mutate---add-column" class="slide level2">
+<h2><strong><code>Mutate()</code></strong> - add column</h2>
+<p>create new columns based on the values in existing columns</p>
+<p>Example: we are interest in the avg number of people per room</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>interviews <span class="sc">%&gt;%</span></span>
+<span id="cb69-2"><a href="#cb69-2"></a>    <span class="fu">mutate</span>(<span class="at">people_per_room =</span> no_membrs <span class="sc">/</span> rooms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mutate---add-column-1" class="slide level2">
+<h2><strong><code>Mutate()</code></strong> - add column</h2>
+<p>We may be interested in investigating whether being a member of an irrigation association had any effect on the ratio of household members to rooms. To look at this relationship, we will first remove data from our dataset where the respondent didn’t answer the question of whether they were a member of an irrigation association. These cases are recorded as “NULL” in the dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>interviews <span class="sc">%&gt;%</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(memb_assoc)) <span class="sc">%&gt;%</span></span>
+<span id="cb70-3"><a href="#cb70-3"></a>    <span class="fu">mutate</span>(<span class="at">people_per_room =</span> no_membrs <span class="sc">/</span> rooms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mutate---add-column-2" class="slide level2">
+<h2><strong><code>Mutate()</code></strong> - add column</h2>
+<ul>
+<li><code>is.na()</code> returns a value of <code>TRUE</code> (because the memb_assoc is missing)</li>
+<li>the <code>!</code>symbol negates this and says we only want values of <code>FALSE</code>, where memb_assoc is not missing.</li>
+</ul>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<p>📝4</p>
+<p>Create a new dataframe from the <code>interviews</code> data that meets the following criteria: contains only the <code>village</code> column and a new column called <code>total_meals</code> containing a value that is equal to the total number of meals served in the household per day on average (<code>no_membrs</code> times <code>no_meals</code>). Only the rows where <code>total_meals</code> is greater than 20 should be shown in the final dataframe.</p>
+<p><strong>Hint</strong>: think about how the commands should be ordered to produce this data frame!</p>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<p>Solution 4</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>interviews_total_meals <span class="ot">&lt;-</span> interviews <span class="sc">%&gt;%</span></span>
+<span id="cb71-2"><a href="#cb71-2"></a>    <span class="fu">mutate</span>(<span class="at">total_meals =</span> no_membrs <span class="sc">*</span> no_meals) <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a href="#cb71-3"></a>    <span class="fu">filter</span>(total_meals <span class="sc">&gt;</span> <span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb71-4"><a href="#cb71-4"></a>    <span class="fu">select</span>(village, total_meals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="count---counting" class="slide level2">
+<h2>Count() - counting</h2>
+<p>If we wanted to count the number of rows of data for each village</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>interviews <span class="sc">%&gt;%</span></span>
+<span id="cb72-2"><a href="#cb72-2"></a>    <span class="fu">count</span>(village)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  village      n
+  &lt;chr&gt;    &lt;int&gt;
+1 Chirodzo    39
+2 God         43
+3 Ruaca       49</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>interviews <span class="sc">%&gt;%</span></span>
+<span id="cb74-2"><a href="#cb74-2"></a>    <span class="fu">count</span>(village, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="co"># to get results in decreasing order</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  village      n
+  &lt;chr&gt;    &lt;int&gt;
+1 Ruaca       49
+2 God         43
+3 Chirodzo    39</code></pre>
+</div>
+</div>
+</section>
+<section id="summarize---summary-statistic" class="slide level2">
+<h2>Summarize() - summary statistic</h2>
+<ul>
+<li><code>group_by()</code>collapses each group into a single-row summary of that group.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a>interviews <span class="sc">%&gt;%</span></span>
+<span id="cb76-2"><a href="#cb76-2"></a>    <span class="fu">group_by</span>(village)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<p>Summarize() - summary statistic</p>
+<ul>
+<li>takes as arguments the column names that contain the <strong>categorical</strong> variables for which you want to calculate the summary statistics.</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>interviews <span class="sc">%&gt;%</span></span>
-<span id="cb77-2"><a href="#cb77-2"></a>    <span class="fu">filter</span>(memb_assoc <span class="sc">==</span> <span class="st">"yes"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb77-3"><a href="#cb77-3"></a>    <span class="fu">select</span>(affect_conflicts, liv_count, no_meals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 33 × 3
-   affect_conflicts liv_count no_meals
-   &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;
- 1 once                     3        2
- 2 never                    2        2
- 3 never                    2        3
- 4 once                     3        2
- 5 frequently               1        3
- 6 more_once                5        2
- 7 more_once                3        2
- 8 more_once                2        3
- 9 once                     3        3
-10 never                    3        3
-# … with 23 more rows</code></pre>
+<span id="cb77-2"><a href="#cb77-2"></a>    <span class="fu">group_by</span>(village) <span class="sc">%&gt;%</span></span>
+<span id="cb77-3"><a href="#cb77-3"></a>    <span class="fu">summarize</span>(<span class="at">mean_no_membrs =</span> <span class="fu">mean</span>(no_membrs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a>interviews <span class="sc">%&gt;%</span></span>
+<span id="cb78-2"><a href="#cb78-2"></a>    <span class="fu">group_by</span>(village, memb_assoc) <span class="sc">%&gt;%</span> <span class="co"># group by multiple col</span></span>
+<span id="cb78-3"><a href="#cb78-3"></a>    <span class="fu">summarize</span>(<span class="at">mean_no_membrs =</span> <span class="fu">mean</span>(no_membrs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Shortcuts</p>
 <div class="footer footer-default">
 
 </div>

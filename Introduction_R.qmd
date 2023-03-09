@@ -47,6 +47,11 @@ echo: true
 
 ![](fig/install_packages_2.png){fig-align="center"}
 
+## Shortcut - run a code
+
+-   PC: `Ctrl` + `Enter`
+-   Mac: `Cmd`+ `Return`
+
 ## Creating an object - **`assignment`**
 
 You can create new objects with `<-`:
@@ -88,16 +93,16 @@ hh_members <- c(3, 7, 10, 6) # vector of numbers
 hh_members
 ```
 
-# Data types & structure
+# Data types & structure {#sec-data-types--structure style="color: darkblue"}
 
-## Types of data
+## Types of data {.nostretch}
 
-| Type             | Definition                                                | Example                       |
-|------------------|-----------------------------------------------------------|-------------------------------|
-| Integer          | *whole numbers from -inf to +inf*                         | 1L, -2L                       |
-| Numeric/Double   | *numbers, fractions & decimals from -inf to + inf*        | 7, 0.2, -5/2                  |
-| Character/String | *quoted strings of letters, numbers, and allowed symbols* | "1", "one", "o_n\_e", "hello" |
-| Logical          | *logical constant of True or False*                       | TRUE, FALSE, T, F             |
+| Type             | Definition                                              | Example                       |
+|------------------|-----------------------------------|-------------------|
+| Integer          | whole numbers from -inf to +inf                         | 1L, -2L                       |
+| Numeric/Double   | numbers, fractions & decimals from -inf to + inf        | 7, 0.2, -5/2                  |
+| Character/String | quoted strings of letters, numbers, and allowed symbols | "1", "one", "o_n\_e", "hello" |
+| Logical          | logical constant of True or False                       | `TRUE`, `FALSE`, `T`, `F`     |
 
 ## Types of data
 
@@ -117,9 +122,12 @@ typeof("one")
 
 ## Types of data
 
-Missing data
+| Type | Defintion                                                                       | Example |
+|-----------|---------------------------------------------------|-----------|
+| NA   | Missing value; technically represented as different types but displayed as `NA` | `NA`    |
+| NULL | The `NULL` object; an object that exists but is completely empty                | `NULL`  |
 
-# Data structure
+# Data structure {#sec-data-structure style="color: darkblue"}
 
 ## Vectors
 
@@ -163,8 +171,6 @@ letters <- c("a", "b", "c", "d")
 letters
 ```
 
-## 
-
 ## Vectors
 
 The general rule R uses is to set the vector to be the most "permissive" type necessary.
@@ -198,7 +204,7 @@ We can coerce `mixed_vec` to be numeric using **`as.numeric()`**, notice what ha
 as.numeric(mixed_vec)
 ```
 
-# Help
+# Help {#sec-help style="color: darkblue"}
 
 ## RStudio
 
@@ -283,15 +289,15 @@ Get the first and third element by passing those indexes as a vector using `c()`
 z[c(1, 3)]
 ```
 
-##List
+## List
 
-Vectors are great for storing a single type of data, but what if we have a variety of different kinds of data we want to store together?
+While vectors are useful for storing a single type of data, they're not well-suited for storing heterogeneous data. In other words, if we have different types of data we want to store together, we need a different data structure.
 
-For example, let's say I want to store the year I am in the PhD program (a number), my name ( a string), and my enrollment status (a logical) in a single object that preserves these different types... 🤔
+## List
 
-A vector won't work, but a list will.
+For example, let's say we want to store the year we're in a PhD program (a number), our name (a string), and our enrollment status (a logical) in a single object that preserves these different types. In this case, a vector won't work because it can only contain elements of the same type. Instead, we can use a list.
 
-Lists are like vectors in that they are a 1-dimensional object, but they can contain heterogeneous data.
+Lists are similar to vectors in that they're 1-dimensional, but they can store heterogeneous data. In other words, each element in a list can be a different type of data. This makes lists a more flexible data structure for storing complex or diverse data.
 
 ## Creating Lists
 
@@ -474,7 +480,7 @@ interviews_last <- interviews[n_rows, ]
 
 # Grammar of data manipulation
 
-## **Learning `dplyr`**
+## Learning **`dplyr`**
 
 ::: {style="background-color: #f1ee8e;"}
 `select()` picks variables based on their names.\
@@ -500,6 +506,7 @@ Reducing the number of columns (or rearranging columns)
 ## Select columns
 
 ```{r}
+#| eval: false
 # to select columns throughout the dataframe
 select(interviews, village, no_membrs, months_lack_food)
 # to do the same thing with subsetting
@@ -511,6 +518,7 @@ select(interviews, village:respondent_wall_type)
 ## Filtering rows
 
 ```{r}
+#| eval: false
 # filters observations where village name is "Chirodzo"
 filter(interviews, village == "Chirodzo")
 ```
@@ -518,6 +526,7 @@ filter(interviews, village == "Chirodzo")
 ## Filtering rows
 
 ```{r}
+#| eval: false
 # filters observations with "and" operator (comma)
 # output dataframe satisfies ALL specified conditions
 filter(interviews, village == "Chirodzo",
@@ -528,6 +537,7 @@ filter(interviews, village == "Chirodzo",
 ## Filtering rows
 
 ```{r}
+#| eval: false
 # filters observations with "&" logical operator
 # output dataframe satisfies ALL specified conditions
 filter(interviews, village == "Chirodzo" &
@@ -535,17 +545,15 @@ filter(interviews, village == "Chirodzo" &
                    no_meals > 2)
 ```
 
+## Shortcut - the pipe
+
+-   PC: `Ctrl` + `Shift` + `M`
+-   Mac: `Cmd` + `Shift` + `M`
+
 ## The pipe
 
-::: {style="background-color: #f1ee8e;"}
-Ctrl + Shift + M if you have a PC
-:::
-
-::: {style="background-color: #f1ee8e;"}
-Cmd + Shift + M if you have a Mac
-:::
-
 ```{r}
+#| eval: false
 # standard 
 interviews2 <- filter(interviews, village == "Chirodzo")
 interviews_ch <- select(interviews2, village:respondent_wall_type)
@@ -558,16 +566,104 @@ interviews_ch <- interviews %>%
 interviews_ch
 ```
 
-## 📝2
+## 📝3
 
 Using pipes, subset the interviews data to include interviews where respondents were members of an irrigation association (memb_assoc) and retain only the columns affect_conflicts, liv_count, and no_meals.
 
-## Solution
+## Solution 3
 
 ```{r}
+#| eval: false
 interviews %>%
     filter(memb_assoc == "yes") %>%
     select(affect_conflicts, liv_count, no_meals)
 ```
 
-Shortcuts
+## **`Mutate()`** - add column
+
+create new columns based on the values in existing columns
+
+Example: we are interest in the avg number of people per room
+
+```{r}
+#| eval: false
+interviews %>%
+    mutate(people_per_room = no_membrs / rooms)
+```
+
+## **`Mutate()`** - add column
+
+We may be interested in investigating whether being a member of an irrigation association had any effect on the ratio of household members to rooms. To look at this relationship, we will first remove data from our dataset where the respondent didn't answer the question of whether they were a member of an irrigation association. These cases are recorded as "NULL" in the dataset.
+
+```{r}
+#| eval: false
+interviews %>%
+    filter(!is.na(memb_assoc)) %>%
+    mutate(people_per_room = no_membrs / rooms)
+```
+
+## **`Mutate()`** - add column
+
+-   `is.na()` returns a value of `TRUE` (because the memb_assoc is missing)
+-   the `!`symbol negates this and says we only want values of `FALSE`, where memb_assoc is not missing.
+
+## 
+📝4
+
+Create a new dataframe from the `interviews` data that meets the following criteria: contains only the `village` column and a new column called `total_meals` containing a value that is equal to the total number of meals served in the household per day on average (`no_membrs` times `no_meals`). Only the rows where `total_meals` is greater than 20 should be shown in the final dataframe.
+
+**Hint**: think about how the commands should be ordered to produce this data frame!
+
+## 
+Solution 4
+
+```{r}
+#| eval: false
+interviews_total_meals <- interviews %>%
+    mutate(total_meals = no_membrs * no_meals) %>%
+    filter(total_meals > 20) %>%
+    select(village, total_meals)
+```
+
+## Count() - counting
+
+If we wanted to count the number of rows of data for each village
+
+```{r}
+interviews %>%
+    count(village)
+```
+
+```{r}
+interviews %>%
+    count(village, sort = TRUE) # to get results in decreasing order
+```
+
+## Summarize() - summary statistic
+
+-   `group_by()`collapses each group into a single-row summary of that group.
+
+```{r}
+#| eval: false
+interviews %>%
+    group_by(village)
+```
+
+## 
+Summarize() - summary statistic
+
+-   takes as arguments the column names that contain the **categorical** variables for which you want to calculate the summary statistics.
+
+```{r}
+#| eval: false
+interviews %>%
+    group_by(village) %>%
+    summarize(mean_no_membrs = mean(no_membrs))
+```
+
+```{r}
+#| eval: false
+interviews %>%
+    group_by(village, memb_assoc) %>% # group by multiple col
+    summarize(mean_no_membrs = mean(no_membrs))
+```
